@@ -6,23 +6,54 @@ Project Overview
 
 DWMS monitors four key driver metrics: PERCLOS (eye closure percentage), yawn rate, pedal pressure stability, and heart-rate/HRV. These are fused into a unified Cogni Score (0-100) which determines the driver’s wellness tier. Depending on the tier, various feedback mechanisms are activated (ambient lighting, haptics, voice prompts, pull-over/SOS).
 
-How to Run the Project
+## How to Run This Project
 
-Clone the repository:
+1. **Install Node.js & npm**
 
-git clone https://github.com/Satyam24-Git/DWMS.git  
-cd DWMS  
+   Make sure you have [Node.js](https://nodejs.org/) (which comes with npm) installed.
 
+   ```bash
+   node -v
+   npm -v
+   ```
 
-Install dependencies (assuming Python):
+2. **Install Dependencies**
 
-pip install -r requirements.txt  
+   In the project directory, install the required packages:
 
+   ```bash
+   npm install
+   ```
 
-Run the simulation module:
+3. **Start the Development Server**
 
-python main.py  
+   Usually, you can run:
 
+   ```bash
+   npm run dev
+   ```
+   or
+   ```bash
+   npm start
+   ```
+
+   > Check the `package.json` file for the exact command under the "scripts" section.
+
+4. **Open the App**
+
+   After the server starts, visit the provided local URL (commonly [http://localhost:5173/](http://localhost:5173/) for Vite, or [http://localhost:3000/](http://localhost:3000/) for Create React App) in your browser.
+
+5. **Build for Production (Optional)**
+
+   To create a production build:
+
+   ```bash
+   npm run build
+   ```
+
+---
+
+If you have any problems or need more details, please check the documentation for the frameworks and libraries used, or open an issue.
 
 (Optional) Configure sensor input sources (camera for PERCLOS/yawns; wearable for HR/HRV; pedal sensor etc.)
 
