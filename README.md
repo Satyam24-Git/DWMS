@@ -6,6 +6,29 @@ Project Overview
 
 DWMS monitors four key driver metrics: PERCLOS (eye closure percentage), yawn rate, pedal pressure stability, and heart-rate/HRV. These are fused into a unified Cogni Score (0-100) which determines the driver’s wellness tier. Depending on the tier, various feedback mechanisms are activated (ambient lighting, haptics, voice prompts, pull-over/SOS).
 
+How to Run the Project
+
+Clone the repository:
+
+git clone https://github.com/Satyam24-Git/DWMS.git  
+cd DWMS  
+
+
+Install dependencies (assuming Python):
+
+pip install -r requirements.txt  
+
+
+Run the simulation module:
+
+python main.py  
+
+
+(Optional) Configure sensor input sources (camera for PERCLOS/yawns; wearable for HR/HRV; pedal sensor etc.)
+
+Observe the dashboard: sensor values updating → Cogni Score → tier transitions → feedback triggers.
+
+
 Tier Logic & Responses
 
 Normal Condition (Cogni Score: 0-20)
@@ -31,18 +54,11 @@ Sensor Thresholds (Working Values)
 
 PERCLOS: Normal < ~20%; 30%+ indicates fatigue; >70% indicates likely sleep.
 
-Yawn Rate: Normal <0.5/min; 1-2/min moderate; >3/min severe.
+Yawn Rate: Normal 3-4/min;  5-7/min moderate; >7/min severe.
 
 Pedal Pressure Stability: Normal >85%; drop to <60% indicates degraded control.
 
 Heart Rate & HRV: Normal ~65-90 bpm, HRV ~10-20 ms. HRV falling below ~5 ms or HR dropping <55 bpm indicates serious risk.
-
-Cogni Score Computation
-Cogni_Score = 0.35 × PERCLOS_Score  
-            + 0.25 × Yawn_Score  
-            + 0.20 × PedalPressure_Score  
-            + 0.20 × HeartRate_Score
-
 
 Each sub-score normalized to 0-100 based on its threshold range. The resulting Cogni Score determines the tier and hence the system response.
 
@@ -58,27 +74,6 @@ Alert & SOS Handler – for Tier 3 scenarios: driver acknowledgement, pull-over 
 
 Visualization Dashboard – front-panel view of car interior (steering, instrument cluster) showing live values and system states.
 
-How to Run the Project
-
-Clone the repository:
-
-git clone https://github.com/Satyam24-Git/DWMS.git  
-cd DWMS  
-
-
-Install dependencies (assuming Python):
-
-pip install -r requirements.txt  
-
-
-Run the simulation module:
-
-python main.py  
-
-
-(Optional) Configure sensor input sources (camera for PERCLOS/yawns; wearable for HR/HRV; pedal sensor etc.)
-
-Observe the dashboard: sensor values updating → Cogni Score → tier transitions → feedback triggers.
 
 Future Enhancements
 
