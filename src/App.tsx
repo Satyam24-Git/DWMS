@@ -177,7 +177,7 @@ function App() {
           <div className="space-y-6">
             <CogniScoreDisplay alertTier={alertTier} />
 
-            </div>
+            
           </div>
         </div>
       </div>
