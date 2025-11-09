@@ -6,7 +6,86 @@ Project Overview
 
 DWMS monitors four key driver metrics: PERCLOS (eye closure percentage), yawn rate, pedal pressure stability, and heart-rate/HRV. These are fused into a unified Cogni Score (0-100) which determines the driver’s wellness tier. Depending on the tier, various feedback mechanisms are activated (ambient lighting, haptics, voice prompts, pull-over/SOS).
 
-## How to Run This Project
+## How to Run CogniShield_prototype
+CogniShield Prototype (i.mobilothon 5.0)
+This is the official hackathon prototype for Team Lambda Propagation's project, CogniShield.
+
+This prototype demonstrates our core innovation: a Hybrid Compute Architecture for AI-enhanced driver wellness monitoring. This architecture is designed to meet the highest functional safety standards (ASIL-D) by separating complex AI perception from deterministic safety logic.
+
+The Hybrid Architecture
+To accurately simulate this two-chip design, this prototype runs as two separate, decoupled Python scripts that communicate over a network socket:
+
+ai_perception_core_jetson.py (The AI Perception Core)
+
+Simulates the NVIDIA Jetson Orin Nano.
+
+Runs the complex, high-throughput AI tasks (using mediapipe).
+
+Performs real-time EAR calibration, PERCLOS calculation, yawn detection, and gaze tracking from a webcam.
+
+Sends this feature data to the safety core.
+
+safety_fusion_core_versal.py (The Safety Fusion Core)
+
+Simulates the AMD Versal AI Edge XA.
+
+Runs the simple, auditable, and deterministic 4-Tier Safety Logic (the "CogniScore" formula).
+
+Receives data from the "Jetson" and fuses it with simulated ECG (Physiological) and CAN bus (Vehicle Dynamics) data to make the final, safe decision.
+
+How to Run This Prototype
+1. Environment Setup
+This project requires Python 3.10.
+
+# 1. Create a new conda environment
+conda create -n hackathon python=3.10
+
+# 2. Activate the environment
+conda activate hackathon
+
+# 3. Install all required libraries
+pip install opencv-python mediapipe numpy scipy
+
+2. Run the Demo
+You must use two separate terminals.
+
+Terminal 1 (Start the Safety Core first):
+
+python safety_fusion_core_versal.py
+
+(Wait until it prints: [SAFETY CORE] Awaiting connection...)
+
+Terminal 2 (Start the AI Core):
+
+python ai_perception_core_jetson.py
+
+(The webcam will turn on for a 5-second calibration)
+
+3. Observe the Results
+Your main demo screen is Terminal 1 (The Safety Core). You will see a [COGNISHIELD STATE] report every 2 seconds, showing the final fused FINAL TIER and all the sensor data it used to make the decision.
+
+4-Tier Safety Logic (Implemented)
+This prototype implements our full 4-Tier safety logic, using PERCLOS thresholds derived from academic research.
+
+TIER 0 (Monotony): Yawn is detected.
+
+TIER 1 (Early Fatigue): PERCLOS > 0.075
+
+TIER 2 (High Drowsiness / Distraction):
+
+PERCLOS > 0.12
+
+OR Gaze is not "Forward"
+
+OR (Simulated) Steering_Status is "ERRATIC"
+
+TIER 3 (Microsleep / Incapacitation):
+
+PERCLOS > 0.15 AND (Simulated) Vehicle_Status is "ZERO_INPUT"
+
+OR (Simulated) HRV_Status is "FAILURE"
+
+## How to Run Tier simulation
 
 1. **Install Node.js & npm**
 
