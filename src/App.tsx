@@ -177,30 +177,6 @@ function App() {
           <div className="space-y-6">
             <CogniScoreDisplay alertTier={alertTier} />
 
-            <div className="bg-white rounded-lg p-6 shadow-lg">
-              <h3 className="text-lg font-bold text-gray-800 mb-3">Tier Protocol Guide</h3>
-              <div className="space-y-3 text-sm">
-                <div className="border-l-4 border-green-500 pl-3 py-2">
-                  <div className="font-bold text-gray-800">NORMAL (0-20)</div>
-                  <div className="text-gray-600">All metrics healthy, system active</div>
-                </div>
-                <div className="border-l-4 border-blue-500 pl-3 py-2">
-                  <div className="font-bold text-gray-800">TIER 0 (20-40)</div>
-                  <div className="text-gray-600">PERCLOS 20-30% or yawn 0.5-1/min</div>
-                </div>
-                <div className="border-l-4 border-yellow-500 pl-3 py-2">
-                  <div className="font-bold text-gray-800">TIER 1 (41-60)</div>
-                  <div className="text-gray-600">Gentle haptics, HRV 5-8ms, pedal 55-70%</div>
-                </div>
-                <div className="border-l-4 border-orange-500 pl-3 py-2">
-                  <div className="font-bold text-gray-800">TIER 2 (61-80)</div>
-                  <div className="text-gray-600">Heavy haptics, HRV &lt;5ms, PERCLOS 50%+</div>
-                </div>
-                <div className="border-l-4 border-red-600 pl-3 py-2">
-                  <div className="font-bold text-gray-800">TIER 3 (81-100)</div>
-                  <div className="text-gray-600">RED ALERT: HR drop &gt;20bpm, PERCLOS 70%+, emergency protocol</div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
