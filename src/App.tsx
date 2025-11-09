@@ -167,42 +167,7 @@ function App() {
               )}
             </div>
 
-            <div className="bg-gray-900 bg-opacity-50 rounded-lg p-6 backdrop-blur">
-              <h2 className="text-2xl font-bold text-white mb-4">Quick Tier Simulation</h2>
-              <div className="grid grid-cols-3 gap-3">
-                <button
-                  onClick={() => simulateTier(-1)}
-                  className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-3 rounded transition-colors"
-                >
-                  Normal
-                </button>
-                <button
-                  onClick={() => simulateTier(0)}
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded transition-colors"
-                >
-                  Tier 0
-                </button>
-                <button
-                  onClick={() => simulateTier(1)}
-                  className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-3 rounded transition-colors"
-                >
-                  Tier 1
-                </button>
-                <button
-                  onClick={() => simulateTier(2)}
-                  className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-3 rounded transition-colors"
-                >
-                  Tier 2
-                </button>
-                <button
-                  onClick={() => simulateTier(3)}
-                  className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-3 rounded transition-colors col-span-2"
-                >
-                  Tier 3 (Emergency)
-                </button>
-              </div>
-            </div>
-
+            
             <div className="bg-gray-900 bg-opacity-50 rounded-lg p-6 backdrop-blur">
               <h2 className="text-2xl font-bold text-white mb-4">Live Metrics</h2>
               <MetricsPanel metrics={metrics} onMetricChange={handleMetricChange} />
